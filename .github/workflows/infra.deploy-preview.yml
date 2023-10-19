@@ -13,10 +13,22 @@ permissions:
   id-token: write
   contents: read
 
+env:
+  TR_VERSION: 1.2.8
+
+defaults:
+  run:
+    shell: bash
+  working_directory: "10_infra/"
+
 jobs:
   preview:
     name: "Preview"
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Hello Tastylog"
+      - name: Checkout Repositry
+        uses: actions/checkout@v4
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.TR_VERSION }}
