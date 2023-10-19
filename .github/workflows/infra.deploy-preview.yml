@@ -1,4 +1,4 @@
-name: "infra preview & deploy3"
+name: "infra preview & deploy"
 
 on:
   push:
